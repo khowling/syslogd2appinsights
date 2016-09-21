@@ -45,7 +45,7 @@ var server = net.createServer(function(socket) {
                     pathname: requestverbpath.replace(/\"/g,'').split(' ')[1],
                     host: cachelabel,
                     headers: {
-                        userAgent : useragent.replace(/\"/g,''),
+                        "user-agent" : useragent.replace(/\"/g,''),
                     }
                 },
                 res = { 
@@ -58,6 +58,7 @@ var server = net.createServer(function(socket) {
                     reqtype: "CDN",
                     MediaLocator: ml_reg && ml_reg.length>1 && ml_reg[1],
                     QualityLevels: ql_reg && ql_reg.length>1 && ql_reg[1],
+		    "user-agent": req.headers["user-agent"]
                 },
                 error = (parseInt(status) == 200) ? null : `status ${status}`
 
